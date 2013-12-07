@@ -16,13 +16,11 @@ If you prefer you can also use [Pathogen] [pathogen], [Vundle] [vundle] or a sim
 
 Now try it out: Edit any file type supported by Exuberant Ctags and within ten seconds the plug-in should create/update your tags file (`~/.vimtags` on UNIX, `~/_vimtags` on Windows) with the tags defined in the file you just edited! This means that whatever file you're editing in Vim (as long as it's on the local file system), tags will always be available by the time you need them!
 
-Additionally if the file you just opened is an AWK, C#, C, C++, Objective-C, Java, Lua, PHP, Python, Ruby, Shell, Tcl or Vim source file you should also notice that the function and type names defined in the file have been syntax highlighted.
+Additionally if the file you just opened is an AWK, C#, C, C++, fortran, Objective-C, Java, Julia, Lua, PHP, Python, Ruby, Shell, Tcl or Vim source file you should also notice that the function and type names defined in the file have been syntax highlighted.
 
 The `easytags.vim` plug-in is intended to work automatically once it's installed, but if you want to change how it works there are several options you can change and commands you can execute from your own mappings and/or automatic commands. These are all documented below.
 
-Note that if the plug-in warns you `ctags` isn't installed you'll have to download it from its [homepage] [exctags], or if you're running Debian/Ubuntu you can install it by executing the following shell command:
-
-    $ sudo apt-get install exuberant-ctags
+Note that download ctags from [chu-/ctags](https://github.com/chu-/ctags). Please follow the installation guide on [chu-/ctags](https://github.com/chu-/ctags).
 
 ### A note about Windows
 
@@ -228,7 +226,9 @@ The easytags plug-in defines new highlighting groups for dynamically highlighted
  * **AWK**: `awkFunctionTag`
  * **C#:** `csClassOrStructTag`, `csMethodTag`
  * **C, C++, Objective C:** `cTypeTag`, `cEnumTag`, `cPreProcTag`, `cFunctionTag`, `cMemberTag`
+ * **Fortran** `fortranFuncTag`
  * **Java:** `javaClassTag`, `javaInterfaceTag`, `javaMethodTag`
+ * **Julia** `juliaFuncTag`
  * **Lua:** `luaFuncTag`
  * **PHP:** `phpFunctionsTag`, `phpClassesTag`
  * **Python:** `pythonFunctionTag`, `pythonMethodTag`, `pythonClassTag`

@@ -919,6 +919,7 @@ let s:tagkinds = {}
 " Define the built-in Vim <=> Ctags file-type mappings.
 let s:vim_filetypes = []
 let s:ctags_filetypes = []
+"call xolox#easytags#map_filetypes('F90', 'fortran')
 call xolox#easytags#map_filetypes('cpp', 'c++')
 call xolox#easytags#map_filetypes('cs', 'c#')
 call xolox#easytags#map_filetypes(exists('g:filetype_asp') ? g:filetype_asp : 'aspvbs', 'asp')
@@ -928,6 +929,7 @@ let s:aliases = {}
 let s:canonical_aliases = {}
 call xolox#easytags#alias_filetypes('c', 'cpp', 'objc', 'objcpp')
 call xolox#easytags#alias_filetypes('html', 'htmldjango')
+call xolox#easytags#alias_filetypes('F90', 'f90', 'f', 'f77', 'F77', 'F95', 'f95')
 
 " Enable line continuation.
 let s:cpo_save = &cpo
@@ -939,6 +941,78 @@ call xolox#easytags#define_tagkind({
       \ 'filetype': 'lua',
       \ 'hlgroup': 'luaFunc',
       \ 'tagkinds': 'f'})
+" Fortran. {{{2
+
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'fortran',
+      \ 'hlgroup': 'fFunction',
+      \ 'tagkinds': 'f'})
+highlight def link fFunction Function
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'fortran',
+      \ 'hlgroup': 'fSubroutine',
+      \ 'tagkinds': 's'})
+highlight def link fSubroutine Function
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'fortran',
+      \ 'hlgroup': 'fModule',
+      \ 'tagkinds': 'm'})
+highlight def link fModule Type
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'fortran',
+      \ 'hlgroup': 'fType',
+      \ 'tagkinds': 't'})
+highlight def link fType Type
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'fortran',
+      \ 'hlgroup': 'fInterface',
+      \ 'tagkinds': 'i'})
+highlight def link fInterface Type
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'fortran',
+      \ 'hlgroup': 'fNamelist',
+      \ 'tagkinds': 'n'})
+highlight def link fNamelist Type
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'fortran',
+      \ 'hlgroup': 'fBlock',
+      \ 'tagkinds': 'b'})
+highlight def link fBlock Type
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'fortran',
+      \ 'hlgroup': 'fCommon',
+      \ 'tagkinds': 'c'})
+highlight def link fCommon Type
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'fortran',
+      \ 'hlgroup': 'fEntry',
+      \ 'tagkinds': 'e'})
+highlight def link fEntry Type
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'fortran',
+      \ 'hlgroup': 'fComponent',
+      \ 'tagkinds': 'k'})
+highlight def link fComponent Type
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'fortran',
+      \ 'hlgroup': 'fLabel',
+      \ 'tagkinds': 'l'})
+highlight def link fLabel Type
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'fortran',
+      \ 'hlgroup': 'fLocal',
+      \ 'tagkinds': 'L'})
+highlight def link fLocal Type
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'fortran',
+      \ 'hlgroup': 'fVariable',
+      \ 'tagkinds': 'v'})
+highlight def link fVariable Type
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'fortran',
+      \ 'hlgroup': 'fProgram',
+      \ 'tagkinds': 'p'})
+highlight def link fProgram Type
 
 " C. {{{2
 
@@ -1104,6 +1178,40 @@ highlight def link rubyModuleName Type
 highlight def link rubyClassName Type
 highlight def link rubyMethodName Function
 
+" Julia. {{{2
+
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'julia',
+      \ 'hlgroup': 'juliaModuleName',
+      \ 'tagkinds': 'm'})
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'julia',
+      \ 'hlgroup': 'juliaClassName',
+      \ 'tagkinds': 'c'})
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'julia',
+      \ 'hlgroup': 'juliaMethodName',
+      \ 'tagkinds': '[fF]'})
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'julia',
+      \ 'hlgroup': 'juliaMacroName',
+      \ 'tagkinds': '[M]'})
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'julia',
+      \ 'hlgroup': 'juliaTypeName',
+      \ 'tagkinds': '[t]'})
+call xolox#easytags#define_tagkind({
+      \ 'filetype': 'julia',
+      \ 'hlgroup': 'juliaImmutaName',
+      \ 'tagkinds': '[i]'})
+
+highlight def link juliaModuleName Type
+highlight def link juliaClassName Type
+highlight def link juliaMethodName Function
+highlight def link juliaMacroName Macro
+highlight def link juliaTypeName Type
+highlight def link juliaImmutaName Type
+
 " Awk. {{{2
 
 call xolox#easytags#define_tagkind({
@@ -1137,5 +1245,6 @@ highlight def link tclCommandTag Operator
 " Restore "cpoptions".
 let &cpo = s:cpo_save
 unlet s:cpo_save
-
+"}}}
 " vim: ts=2 sw=2 et
+" vim:foldmethod=marker:tabstop=4
