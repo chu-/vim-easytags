@@ -1204,7 +1204,8 @@ call xolox#easytags#define_tagkind({
       \ 'filetype': 'julia',
       \ 'hlgroup': 'juliaImmutaName',
       \ 'tagkinds': '[i]'})
-
+" Type or Function or Macro, please refer to the julia.vim in vim's syntax
+" path. open /syntax/julia.vim and search "hi def link" to locate
 highlight def link juliaModuleName Type
 highlight def link juliaClassName Type
 highlight def link juliaMethodName Function
